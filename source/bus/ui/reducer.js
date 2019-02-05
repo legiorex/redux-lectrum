@@ -8,7 +8,7 @@ const initialState = Map({
 });
 
 export const uiReducer = (state = initialState, action) => {
-    switch (action.types) {
+    switch (action.type) {
         case types.START_FETCHING:
             return state.set('isFetching', true);
 
