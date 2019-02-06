@@ -40,18 +40,6 @@ export default class Posts extends Component {
     static defaultProps = {
         profile: mockedProfile,
 
-        // // Actions
-        // actions: {
-        //     // Users
-        //     fetchUsersAsync: () => {},
-
-        //     // Posts
-        //     fetchPostsAsync: () => {},
-        //     removePostAsync: () => {},
-        //     createPostAsync: () => {},
-        //     likePostAsync:   () => {},
-        //     unlikePostAsync: () => {},
-        // },
     };
 
     componentDidMount () {

@@ -1,62 +1,89 @@
 // Core
 import React, { Component, createRef } from 'react';
 import { Formik, Form, Field } from 'formik';
+import { connect } from 'react-redux';
+import { bindActionCreators } from "redux";
 
 // Instruments
 import Styles from './styles.m.css';
 import { composer } from '../../bus/forms/shapes';
 
+// Actions
+import { postsActions } from '../../bus/posts/actions';
+
+const mapStateToProps = (state) => {
+    return {
+        posts:   state.posts,
+        profile: state.profile,
+    };
+};
+const mapDispatchToProps = (dispatch) => {
+    return {
+        actions: bindActionCreators(
+            {
+                fetchPostsAsync: postsActions.fetchPostsAsync,
+                createPostAsync: postsActions.createPostAsync,
+            },
+            dispatch
+        ),
+    };
+};
+
+@connect(mapStateToProps, mapDispatchToProps)
+
 export default class Composer extends Component {
-    formikForm = createRef();
+  formikForm = createRef();
 
-    _submitForm = (formData, actions) => {
-        this._createPost(formData);
-        actions.resetForm();
-    };
+  _submitForm = (formData, actions) => {
+      this._createPost(formData);
+      actions.resetForm();
+  };
 
-    _createPost = ({ comment }) => {
-        if (!comment) {
-            return null;
-        }
+  _createPost = ({ comment }) => {
+      if (!comment) {
+          return null;
+      }
 
-        this.props.actions.createPostAsync(comment);
-    };
+      this.props.actions.createPostAsync(comment);
+  };
 
-    _submitFormOnEnter = (event) => {
-        if (event.key === 'Enter') {
-            event.preventDefault();
+  _submitFormOnEnter = (event) => {
+      if (event.key === "Enter") {
+          event.preventDefault();
 
-            this.formikForm.current.submitForm();
-        }
-    };
+          this.formikForm.current.submitForm();
+      }
+  };
 
-    render () {
-        const { profile } = this.props;
+  render () {
+      const { profile } = this.props;
 
-        return (
-            <Formik
-                initialValues = { composer.shape }
-                ref = { this.formikForm }
-                render = { () => {
-                    return (
-                        <section className = { Styles.composer }>
-                            <img src = { profile.get('avatar') } />
-                            <Form>
-                                <Field
-                                    component = 'textarea'
-                                    name = 'comment'
-                                    placeholder = { `What's on your mind, ${profile.get('firstName')}?` }
-                                    type = 'text'
-                                    onKeyPress = { this._submitFormOnEnter }
-                                />
-                                <input type = 'submit' value = 'Запостить' />
-                            </Form>
-                        </section>
-                    );
-                } }
-                validationSchema = { composer.schema }
-                onSubmit = { this._submitForm }
-            />
-        );
-    }
+      return (
+          <Formik
+              initialValues = { composer.shape }
+              ref = { this.formikForm }
+              render = { () => {
+                  return (
+                      <section className = { Styles.composer }>
+                          <img src = { profile.get("avatar") } />
+                          <Form>
+                              <Field
+                                  component = 'textarea'
+                                  name = 'comment'
+                                  placeholder = { `What's on your mind, ${profile.get(
+                                      "firstName"
+                                  )}?` }
+                                  type = 'text'
+                                  onKeyPress = { this._submitFormOnEnter }
+                              />
+                              <input type = 'submit' value = 'Запостить' />
+                          </Form>
+                      </section>
+                  );
+              } }
+              validationSchema = { composer.schema }
+              onSubmit = { this._submitForm }
+          />
+      );
+  }
 }
