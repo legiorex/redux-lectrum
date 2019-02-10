@@ -8,7 +8,16 @@ export const authActions = {
             type: types.AUTHENTICATE,
         };
     },
-
+    initialize: () => {
+        return {
+            type: types.INITIALIZE,
+        };
+    },
+    logout: () => {
+        return {
+            type: types.LOGOUT,
+        };
+    },
     // Async
     signupAsync: (userData) => {
         return {
@@ -22,4 +31,20 @@ export const authActions = {
             payload: userLogin,
         };
     },
+    authenticateAsync: () => {
+        return {
+            type: types.AUTHENTICATE_ASYNC,
+        };
+    },
+    initializeAsync: () => {
+        return {
+            type: types.INITIALIZE_ASYNC,
+        };
+    },
+    logoutAsync: () => {
+        return {
+            type: types.LOGOUT_ASYNC,
+        };
+    },
+
 };

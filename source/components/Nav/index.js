@@ -8,23 +8,24 @@ import cx from 'classnames';
 import Styles from './styles.m.css';
 import { book } from '../../navigation/book';
 
-
+// Actions
+import { authActions } from '../../bus/auth/actions';
 const mapStateToProps = (state) => {
     return {
         isAuthenticated: state.auth.get('isAuthenticated'),
         profile:         state.profile,
     };
 };
+const mapDispatchToProps = {
+    logoutAsync: authActions.logoutAsync,
+};
 
-@connect(mapStateToProps)
+@connect(mapStateToProps, mapDispatchToProps)
 export default class Nav extends Component {
     static defaultProps = {
         // State
-       
-        isOnline: false,
 
-        // Actions
-        logoutAsync: () => {},
+        isOnline: false,
     };
 
     _getNav = () => {
@@ -59,6 +60,7 @@ export default class Nav extends Component {
     };
 
     _logout = () => {
+
         this.props.logoutAsync();
     };
 

@@ -35,7 +35,7 @@ export default class Post extends Component {
         } = this.props;
 
         const cross = this._getCross();
-
+        
         return (
             <section className = { Styles.post }>
                 {cross}

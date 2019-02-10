@@ -6,8 +6,8 @@ import { invite } from '../../REST/';
 
 export const login = {
     shape: {
-        email:    'elon.musk@space.x',
-        password: '12345',
+        email:    'ivan.test@mail.ru',
+        password: '00000',
         remember: false,
     },
     schema: object().shape({
@@ -23,10 +23,10 @@ export const login = {
 
 export const signup = {
     shape: {
-        firstName: 'Elon',
-        lastName:  'Musk',
-        email:     'elon.musk@space.x',
-        password:  '12345',
+        firstName: 'Ivan',
+        lastName:  'Ivanov',
+        email:     'ivan.test@mail.ru',
+        password:  '00000',
         invite,
     },
     schema: object().shape({
