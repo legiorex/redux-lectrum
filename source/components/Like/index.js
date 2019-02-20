@@ -14,7 +14,7 @@ export default class Like extends Component {
             actions: { likePostAsync, unlikePostAsync },
             id,
         } = this.props;
-
+        
         this._getLikedByMe() ? unlikePostAsync(id) : likePostAsync(id);
     };
 

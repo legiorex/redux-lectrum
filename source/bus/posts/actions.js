@@ -3,6 +3,9 @@ import { types } from "./types";
 
 // Instruments
 export const postsActions = {
+
+    // Sync
+
     fillPosts: (posts) => {
         return {
             type:    types.FILL_POSTS,
@@ -26,6 +29,20 @@ export const postsActions = {
             type: types.CLEAR_POST,
         };
     },
+    likePost: (likedPostData) => {
+        return {
+            type:    types.LIKE_POST,
+            payload: likedPostData,
+        };
+    },
+    unlikePost: (likedPostData) => {
+        return {
+            type:    types.UNLIKE_POST,
+            payload: likedPostData,
+        };
+    },
+
+    // Async
 
     fetchPostsAsync: () => {
         return {
@@ -44,6 +61,18 @@ export const postsActions = {
     removePostAsync: (postID) => {
         return {
             type:    types.REMOVE_POST_ASYNC,
+            payload: postID,
+        };
+    },
+    likePostAsync: (postID) => {
+        return {
+            type:    types.LIKE_POST_ASYNC,
+            payload: postID,
+        };
+    },
+    unlikePostAsync: (postID) => {
+        return {
+            type:    types.UNLIKE_POST_ASYNC,
             payload: postID,
         };
     },
