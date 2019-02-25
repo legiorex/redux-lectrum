@@ -1,5 +1,6 @@
 //Core
 import { put, apply } from 'redux-saga/effects';
+import { actions } from 'react-redux-form';
 
 // Instruments
 import { api } from '../../../../REST';
@@ -25,6 +26,8 @@ export function* loginForm ({ payload: userLogin }) {
         yield apply(localStorage, localStorage.setItem, ['token', profile.token]);
         yield put(profileActions.fillProfile(profile));
         yield put(authActions.authenticate());
+        yield put(actions.change('forms.user.profile.firstName', profile.firstName));
+        yield put(actions.change('forms.user.profile.lastName', profile.lastName));
     } catch (error) {
 
         yield put(uiActions.emitError(error, 'loginForm worker'));

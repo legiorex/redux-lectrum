@@ -20,6 +20,9 @@ export const profileReducer = (state = initialState, action) => {
         case types.CLEAR_PROFILE:
             return state.clear();
 
+        case types.UPDATE_AVATAR:
+            return state.set('avatar', action.payload);
+
         default:
             return state;
     }

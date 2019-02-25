@@ -27,9 +27,6 @@ export default class LoginForm extends Component {
     static defaultProps = {
         // State
         isFetching: false,
-
-        // // Actions
-        // loginAsync: () => {},
     };
 
     _submitLoginForm = (credentials) => {
