@@ -4,6 +4,7 @@ import { types } from './types';
 export const usersActions = {
     // Sync
     fillUsers: (users) => {
+        
         return {
             type:    types.FILL_USERS,
             payload: users,
