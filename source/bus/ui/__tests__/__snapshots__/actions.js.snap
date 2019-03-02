@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ui actions: emitError 1`] = `
+Object {
+  "error": true,
+  "meta": null,
+  "payload": [Error: TEST_ERROR_MESSAGE.],
+  "type": "EMIT_ERROR",
+}
+`;
+
+exports[`ui actions: setOfflineState 1`] = `
+Object {
+  "type": "SET_OFFLINE_STATE",
+}
+`;
+
+exports[`ui actions: setOnlineState 1`] = `
+Object {
+  "type": "SET_ONLINE_STATE",
+}
+`;
+
+exports[`ui actions: startFetching 1`] = `
+Object {
+  "type": "START_FETCHING",
+}
+`;
+
+exports[`ui actions: stopFetching 1`] = `
+Object {
+  "type": "STOP_FETCHING",
+}
+`;
