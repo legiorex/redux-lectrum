@@ -19,6 +19,8 @@ export function* logout () {
         const response = yield apply(api, api.auth.logout);
 
         if (response.status !== 204) {
+            const { message } = yield apply(response, response.json);
+
             throw new Error(message);
         }
     } catch (error) {
