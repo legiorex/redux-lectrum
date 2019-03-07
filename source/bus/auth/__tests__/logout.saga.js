@@ -31,12 +31,12 @@ describe('logout saga:', () => {
             .run();
     });
 
-    test('should complete a not 204 status response scenario', async () => {
+    test('should complete a 400 status response scenario', async () => {
         await expectSaga(logout)
             .put(uiActions.startFetching())
-            .provide([[apply(api, api.auth.logout), __.errorMessage]])
+            .provide([[apply(api, api.auth.logout), __.fetchResponseFail400]])
             
-            // .put(uiActions.emitError(__.error, 'logout worker'))            
+            .put(uiActions.emitError(__.error, 'logout worker'))            
             .apply(localStorage, localStorage.removeItem, ['token'])
             .apply(localStorage, localStorage.removeItem, ['remember'])
             .put(postsActions.clearPosts())
