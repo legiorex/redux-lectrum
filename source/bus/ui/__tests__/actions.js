@@ -18,6 +18,6 @@ describe('ui actions:', () => {
     });
 
     test("emitError", () => {
-        expect(uiActions.emitError(__.error)).toMatchSnapshot();
+        expect(uiActions.emitError(__.error, null)).toMatchSnapshot();
     });
 });
